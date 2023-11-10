@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:praktikum_modul_7_login_unguided/aboutPage.dart';
 import 'package:praktikum_modul_7_login_unguided/biodataPage.dart';
+import 'package:praktikum_modul_7_login_unguided/loginPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -21,7 +22,28 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.info_outline),
             onPressed: () =>
                 _openPageAbout(context: context, fullscreenDialog: true),
-          )
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.exit_to_app,
+              color: const Color.fromARGB(255, 241, 40, 25),
+              shadows: [
+                BoxShadow(
+                  color: Colors.white,
+                  blurRadius: 2.0,
+                  offset: Offset(0, 0),
+                ),
+              ],
+            ),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => loginPage(),
+                ),
+              );
+            },
+          ),
         ],
       ),
       body: SafeArea(
@@ -49,10 +71,10 @@ class _HomePageState extends State<HomePage> {
               Container(
                 padding: const EdgeInsets.all(12.0),
                 decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 43, 72, 95),
+                  color: Color.fromARGB(255, 40, 96, 143),
                   boxShadow: [
                     BoxShadow(
-                      color: Color.fromARGB(255, 106, 105, 105),
+                      color: Color.fromARGB(255, 86, 85, 85),
                       blurRadius: 24,
                       offset: Offset(0, 11),
                     ),
@@ -69,45 +91,34 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       width: 12.0,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Expanded(
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                            Text(
-                              'Nama: ${_biodata.nama}',
-                              style: TextStyle(
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            SizedBox(height: 10),
-                            Text(
-                              'Jenis Kelamin: ${_biodata.jenisKelamin}',
-                              style: TextStyle(
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            SizedBox(height: 10),
-                            Text(
-                              'Alamat: ${_biodata.alamat}',
-                              style: TextStyle(
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            SizedBox(height: 10),
-                            Text(
-                              'Hobi: ${_biodata.hobi}',
-                              style: TextStyle(
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                          ])),
-                    )
+                    Expanded(
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                          Text(
+                            'Nama: ${_biodata.nama}',
+                            style:
+                                TextStyle(fontSize: 17.0, color: Colors.white),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            'Jenis Kelamin: ${_biodata.jenisKelamin}',
+                            style:
+                                TextStyle(fontSize: 17.0, color: Colors.white),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            'Alamat: ${_biodata.alamat}',
+                            style:
+                                TextStyle(fontSize: 17.0, color: Colors.white),
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            'Hobi: ${_biodata.hobi}',
+                            style:
+                                TextStyle(fontSize: 17.0, color: Colors.white),
+                          ),
+                        ]))
                   ],
                 ),
               ),
