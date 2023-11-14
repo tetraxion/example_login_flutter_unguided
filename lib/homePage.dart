@@ -47,83 +47,85 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Text(
-                  'Biodata',
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                ),
-              ),
-              SizedBox(height: 10),
-              Center(
-                child: Image.asset(
-                  "assets/images/biodata.png",
-                  width: 160.0,
-                  height: 120.0,
-                  fit: BoxFit.fill,
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                padding: const EdgeInsets.all(12.0),
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 40, 96, 143),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color.fromARGB(255, 86, 85, 85),
-                      blurRadius: 24,
-                      offset: Offset(0, 11),
-                    ),
-                  ],
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(
-                      8.0,
+        child: ListView(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Text(
+                      'Biodata',
+                      style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
                     ),
                   ),
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      width: 12.0,
+                  SizedBox(height: 10),
+                  Center(
+                    child: Image.asset(
+                      "assets/images/biodata.png",
+                      width: 160.0,
+                      height: 120.0,
+                      fit: BoxFit.fill,
                     ),
-                    Expanded(
-                        child: Column(
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    padding: const EdgeInsets.all(12.0),
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 40, 96, 143),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(255, 86, 85, 85),
+                          blurRadius: 24,
+                          offset: Offset(0, 11),
+                        ),
+                      ],
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          8.0,
+                        ),
+                      ),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          width: 12.0,
+                        ),
+                        Expanded(
+                          child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                          Text(
-                            'Nama: ${_biodata.nama}',
-                            style:
-                                TextStyle(fontSize: 17.0, color: Colors.white),
+                              Text(
+                                'Nama: ${_biodata.nama}',
+                                style: TextStyle(fontSize: 17.0, color: Colors.white),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Jenis Kelamin: ${_biodata.jenisKelamin}',
+                                style: TextStyle(fontSize: 17.0, color: Colors.white),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Alamat: ${_biodata.alamat}',
+                                style: TextStyle(fontSize: 17.0, color: Colors.white),
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                'Hobi: ${_biodata.hobi}',
+                                style: TextStyle(fontSize: 17.0, color: Colors.white),
+                              ),
+                            ],
                           ),
-                          SizedBox(height: 10),
-                          Text(
-                            'Jenis Kelamin: ${_biodata.jenisKelamin}',
-                            style:
-                                TextStyle(fontSize: 17.0, color: Colors.white),
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            'Alamat: ${_biodata.alamat}',
-                            style:
-                                TextStyle(fontSize: 17.0, color: Colors.white),
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            'Hobi: ${_biodata.hobi}',
-                            style:
-                                TextStyle(fontSize: 17.0, color: Colors.white),
-                          ),
-                        ]))
-                  ],
-                ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(

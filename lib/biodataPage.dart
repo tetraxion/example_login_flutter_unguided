@@ -31,67 +31,71 @@ class _BiodataPageState extends State<BiodataPage> {
         title: Text('Halaman Biodata'),
         backgroundColor: const Color.fromARGB(255, 36, 78, 112),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              controller: _namaController,
-              decoration: InputDecoration(labelText: 'Nama'),
-            ),
-            SizedBox(height: 16),
-            Text('Jenis Kelamin'),
-            Row(
+      body: ListView( // Wrap the body with ListView
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Radio(
-                  value: 'Laki-laki',
-                  groupValue: _selectedJenisKelamin,
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedJenisKelamin = value.toString();
-                    });
-                  },
+                TextField(
+                  controller: _namaController,
+                  decoration: InputDecoration(labelText: 'Nama'),
                 ),
-                Text('Laki-laki'),
-                Radio(
-                  value: 'Perempuan',
-                  groupValue: _selectedJenisKelamin,
-                  onChanged: (value) {
-                    setState(() {
-                      _selectedJenisKelamin = value.toString();
-                    });
-                  },
+                SizedBox(height: 16),
+                Text('Jenis Kelamin'),
+                Row(
+                  children: [
+                    Radio(
+                      value: 'Laki-laki',
+                      groupValue: _selectedJenisKelamin,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedJenisKelamin = value.toString();
+                        });
+                      },
+                    ),
+                    Text('Laki-laki'),
+                    Radio(
+                      value: 'Perempuan',
+                      groupValue: _selectedJenisKelamin,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedJenisKelamin = value.toString();
+                        });
+                      },
+                    ),
+                    Text('Perempuan'),
+                  ],
                 ),
-                Text('Perempuan'),
+                TextField(
+                  controller: _alamatController,
+                  decoration: InputDecoration(labelText: 'Alamat'),
+                ),
+                TextField(
+                  controller: _hobiController,
+                  decoration: InputDecoration(labelText: 'Hobi'),
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    Biodata updatedBiodata = Biodata(
+                      nama: _namaController.text,
+                      jenisKelamin: _selectedJenisKelamin,
+                      alamat: _alamatController.text,
+                      hobi: _hobiController.text,
+                    );
+                    Navigator.pop(context, updatedBiodata);
+                  },
+                  child: Text('Simpan Biodata'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 36, 78, 112),
+                  ),
+                ),
               ],
             ),
-            TextField(
-              controller: _alamatController,
-              decoration: InputDecoration(labelText: 'Alamat'),
-            ),
-            TextField(
-              controller: _hobiController,
-              decoration: InputDecoration(labelText: 'Hobi'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Biodata updatedBiodata = Biodata(
-                  nama: _namaController.text,
-                  jenisKelamin: _selectedJenisKelamin,
-                  alamat: _alamatController.text,
-                  hobi: _hobiController.text,
-                );
-                Navigator.pop(context, updatedBiodata);
-              },
-              child: Text('Simpan Biodata'),
-              style: ElevatedButton.styleFrom(
-                primary: Color.fromARGB(255, 36, 78, 112),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
